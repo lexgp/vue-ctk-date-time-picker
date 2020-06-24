@@ -8,6 +8,16 @@
         :color="dark ? '#757575' : '#424242'"
         :dark="dark"
         with-border
+        @click="past++"
+      >
+        <span class="fs-16">
+          <svg data-v-628b1b6b="" viewBox="0 0 1000 1000"><path data-v-628b1b6b="" d="M336.2 274.5l-210.1 210h805.4c13 0 23 10 23 23s-10 23-23 23H126.1l210.1 210.1c11 11 11 21 0 32-5 5-10 7-16 7s-11-2-16-7l-249.1-249c-11-11-11-21 0-32l249.1-249.1c21-21.1 53 10.9 32 32z"></path></svg>
+        </span>
+      </CustomButton>
+      <CustomButton
+        :color="dark ? '#757575' : '#424242'"
+        :dark="dark"
+        with-border
         @click="$emit('back')"
       >
         <span class="fs-16">
@@ -69,7 +79,8 @@
     data () {
       return {
         months: null,
-        years: null
+        years: null,
+        past: 0 // Отступ в прошлое
       }
     },
     computed: {
@@ -97,7 +108,7 @@
       },
       getYears () {
         this.months = null
-        this.years = ArrayRange(this.month.year - 117, this.month.year + 7)
+        this.years = ArrayRange(this.month.year - 7 - this.past * 7, this.month.year + 7 - this.past * 7)
       },
       selectMonth (monthNumber) {
         this.$emit('input', { month: monthNumber, year: this.currentYear })
