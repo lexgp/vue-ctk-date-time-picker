@@ -97,7 +97,7 @@
       },
       getYears () {
         this.months = null
-        this.years = ArrayRange(this.month.year - 7, this.month.year + 7)
+        this.years = ArrayRange(this.month.year - 117, this.month.year + 7)
       },
       selectMonth (monthNumber) {
         this.$emit('input', { month: monthNumber, year: this.currentYear })
